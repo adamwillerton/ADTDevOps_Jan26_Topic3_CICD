@@ -2,13 +2,18 @@ version: 0.2
 
 phases:
   install:
+    runtime-versions:
+      nodejs: 18
     commands:
-      - echo "Starting build..."
+      - npm ci
   build:
     commands:
-      - echo "Copying files to S3..."
-      - aws s3 cp . s3://adamdemobucket123/demo/ --recursive
+      - npm run lint
+      - npm test
 
 artifacts:
   files:
     - '**/*'
+
+
+
