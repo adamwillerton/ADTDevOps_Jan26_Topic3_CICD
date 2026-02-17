@@ -3,10 +3,11 @@ version: 0.2
 phases:
   install:
     commands:
-      - npm install
+      - echo "Starting build..."
   build:
     commands:
-      - npm run build
+      - echo "Copying files to S3..."
+      - aws s3 cp . s3://awbucket1807/demo/ --recursive
 
 artifacts:
   files:
